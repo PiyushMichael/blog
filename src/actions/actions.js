@@ -1,9 +1,8 @@
 import jsonPlaceholder from '../json-placeholder-config';
 
-export const FetchPosts = async () => {
+//this is syntax for async actions in redux using thunk
+//arrow function to arrow function
+export const FetchPosts = () => async dispatch => {
 	const response = await jsonPlaceholder.get('/posts');
-	return {
-		type: 'FETCH_POSTS',
-		payload: response
-	};
+	dispatch({type: 'FETCH_POSTS', payload: response.data});
 };
